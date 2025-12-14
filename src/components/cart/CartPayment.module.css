@@ -1,0 +1,45 @@
+.payment{
+  display: flex;
+  flex-direction: column;
+}
+.paymentInfo{
+  display: flex;
+  flex-direction: column;
+}
+.Button{
+  background-color: white;
+  border: 1px solid #dcdbdb;
+  color: #000;
+  padding: 8px 20px;
+  margin: 2px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.Button:hover{
+  background-color: #586efe;
+  border: 1px solid #e7e7e7;
+  color: white;
+}
+.Input{
+  background-color: white;
+  border: 1px solid #dcdbdb;
+  color: #000;
+  padding: 8px 20px;
+  margin: 2px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.Input:focus{
+  outline-color: red;
+}
+.proceedButton{
+  background-color: #586efe;
+  border: 1px solid #e7e7e7;
+  padding: 8px 20px;
+  margin: 2px 5px;
+  border-radius: 10px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -1,0 +1,78 @@
+.cardContainer, .foodItemsContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.card{
+  flex: 1 0 300px;
+  max-width:300px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+.card:hover{
+  transform: scale(1.02);
+}
+.cardInfo{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  position: absolute;
+  bottom: 2px;
+}
+.cardInfo span{
+  margin: 0 10px;
+}
+.card button{
+  /* background-color: rgb(57, 57, 178); */
+  color: white;
+  font-size: 24px;
+  /* font-weight: bold; */
+  font-style: italic;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* padding: 1px 1px 0 0; */
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  filter: drop-shadow(0 0 5px rgba(13, 255, 41, 0.8));
+  animation: glow 3s infinite;
+  cursor: pointer;
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 4px 2px rgba(0, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 8px 4px rgba(0, 255, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 4px 2px rgba(0, 255, 255, 0.6);
+  }
+}
+.remove{
+  background-color: red;
+}
+.add{
+  background-color: green;
+  padding: 1px 1px 0 0;
+}

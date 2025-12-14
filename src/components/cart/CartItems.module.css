@@ -1,0 +1,51 @@
+.cardContainer{
+  display: flex;
+  flex-direction: column;
+  flex: 2 0 200px;
+}
+.card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cardContainer h3{
+  margin: 0 auto;
+}
+.hr{
+  border: 1px solid rgb(242, 241, 241);
+  width: 60%;
+}
+.card img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.cardInfo {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px 10px;
+}
+.proName{
+  flex: 4;
+  margin-left: 20px;
+}
+.proPrice{
+  flex: 1;
+}
+.remove{
+  flex: 1;
+  width: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.total{
+  margin: 10px auto;
+  font-weight: bold;
+}
