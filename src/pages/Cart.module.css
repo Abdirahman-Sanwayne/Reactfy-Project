@@ -1,10 +1,30 @@
-.cartContainer{
+.cartPage {
+  padding: 20px;
+}
+
+.emptyMessage {
+  color: red;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.5rem;
+}
+
+.cartContainer {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  max-width: 800px;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1000px;
   margin: 20px auto;
-  padding: 30px 30px;
-  box-shadow: 2px 2px 4px 2px #e0dfdf;
-  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .cartContainer {
+    flex-direction: column;
+    padding: 20px;
+  }
 }

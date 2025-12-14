@@ -1,45 +1,109 @@
-.payment{
+.payment {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
 }
-.paymentInfo{
+
+.payment h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.paymentInfo {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
-.Button{
-  background-color: white;
+
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.Button {
+  background-color: #fff;
   border: 1px solid #dcdbdb;
   color: #000;
-  padding: 8px 20px;
-  margin: 2px 5px;
-  border-radius: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
 }
-.Button:hover{
+
+.Button:hover {
   background-color: #586efe;
-  border: 1px solid #e7e7e7;
-  color: white;
+  color: #fff;
+  border-color: #586efe;
 }
-.Input{
-  background-color: white;
+
+.Input {
   border: 1px solid #dcdbdb;
-  color: #000;
-  padding: 8px 20px;
-  margin: 2px 5px;
-  border-radius: 10px;
-  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
-.Input:focus{
-  outline-color: red;
+
+.Input:focus {
+  outline: none;
+  border-color: #586efe;
+  box-shadow: 0 0 4px rgba(88, 110, 254, 0.5);
 }
-.proceedButton{
+
+.warning {
+  color: red;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+.proceedButton {
   background-color: #586efe;
-  border: 1px solid #e7e7e7;
-  padding: 8px 20px;
-  margin: 2px 5px;
+  border: none;
+  padding: 12px 20px;
   border-radius: 10px;
   color: white;
-  font-size: 24px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.proceedButton:hover {
+  background-color: #4050d8;
+}
+
+.proceedButton:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+/* ✅ Responsive adjustments */
+@media (max-width: 768px) {
+  .payment {
+    padding: 15px;
+  }
+
+  .methods {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .Button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .proceedButton {
+    width: 100%;
+    font-size: 1rem;
+  }
 }

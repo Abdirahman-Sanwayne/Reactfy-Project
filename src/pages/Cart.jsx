@@ -4,20 +4,19 @@ import CartPayment from "../components/cart/CartPayment";
 import useShop from "../ShopContext";
 
 const Cart = () => {
-  const { cart } = useShop(); // Destructuring cart from the context
+  const { cart } = useShop();
+
   return (
-    <div>
+    <main className={styles.cartPage}>
       {cart.length === 0 ? (
-        <h2 style={{ color: "red", textAlign: "center", marginTop: "50px" }}>
-          Cart is empty
-        </h2>
+        <h2 className={styles.emptyMessage}>Cart is empty</h2>
       ) : (
-        <div className={styles.cartContainer}>
+        <section className={styles.cartContainer}>
           <CartItems />
           <CartPayment />
-        </div>
+        </section>
       )}
-    </div>
+    </main>
   );
 };
 

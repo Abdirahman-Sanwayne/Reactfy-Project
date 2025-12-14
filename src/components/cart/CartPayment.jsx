@@ -5,10 +5,10 @@ import useShop from "../../ShopContext";
 import { toast } from "react-hot-toast";
 
 const CartPayment = () => {
-  const { total, cart } = useShop();
+  const { total } = useShop();
   const numberInputRef = useRef();
   const [phone, setPhone] = useState("");
-  const [Focused, setFocused] = useState(false);
+  const [focused, setFocused] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleFocus = () => {
@@ -17,6 +17,7 @@ const CartPayment = () => {
       setFocused(true);
     }
   };
+
   useEffect(() => {
     setFocused(false);
   }, [phone]);
@@ -42,14 +43,11 @@ const CartPayment = () => {
           apiUserId: process.env.REACT_APP_MERCHANT_API_USER_ID,
           apiKey: process.env.REACT_APP_MERCHANT_API_KEY,
           paymentMethod: "mwallet_account",
-          payerInfo: {
-            accountNo: phone,
-          },
+          payerInfo: { accountNo: phone },
           transactionInfo: {
             referenceId: "12334",
             invoiceId: "7896504",
             amount: total,
-            // currency: "ETB", // ebir
             currency: "USD",
             description: "Product details",
           },
@@ -61,10 +59,12 @@ const CartPayment = () => {
         paymentBody
       );
       setLoading(false);
-      console.log("Number:- ", phone);
-      console.log("Jawaab:- ", data);
+      console.log("Phone:", phone);
+      console.log("Response:", data);
     } catch (error) {
-      console.log(error);
+      setLoading(false);
+      console.error(error);
+      toast.error("Payment failed. Try again.");
     }
   };
 
@@ -72,33 +72,36 @@ const CartPayment = () => {
     <div className={styles.payment}>
       <h2>Payment</h2>
       <div className={styles.paymentInfo}>
-        <button className={styles.Button} onClick={handleFocus}>
-          ZAAD
-        </button>
-        <button className={styles.Button} onClick={handleFocus}>
-          SAHAL
-        </button>
-        <button className={styles.Button} onClick={handleFocus}>
-          EVC Plus
-        </button>
-        {Focused && (
-          <span style={{ color: "red", marginLeft: "20px" }}>
-            Enter Your Number!
-          </span>
-        )}
+        <div className={styles.methods}>
+          {["ZAAD", "SAHAL", "EVC Plus"].map((method) => (
+            <button
+              key={method}
+              className={styles.Button}
+              onClick={handleFocus}
+            >
+              {method}
+            </button>
+          ))}
+        </div>
+        {focused && <span className={styles.warning}>Enter Your Number!</span>}
         <input
-          type="text"
+          type="tel"
           placeholder="063 xxx xxxx"
           value={phone}
           className={styles.Input}
           onChange={(e) => setPhone(e.target.value)}
           ref={numberInputRef}
         />
-        <button className={styles.proceedButton} onClick={handleSubmit}>
-          {loading ? "Loading..." : "Proceed"}
+        <button
+          className={styles.proceedButton}
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? "Processing..." : "Proceed"}
         </button>
       </div>
     </div>
   );
 };
+
 export default CartPayment;

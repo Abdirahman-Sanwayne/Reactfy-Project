@@ -1,16 +1,35 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import styles from "./Header.module.css";
 import useShop from "../ShopContext";
+
 const Header = () => {
   const { cart } = useShop();
   const cartTotal = cart.reduce((total, item) => total + 1, 0);
   const admin = true;
+
+  // State for mobile menu toggle
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
+      {/* Logo */}
       <Link to={admin ? "/dashboard" : "/"} className={styles.logo}>
         REACTFY
       </Link>
-      <ul className={styles.tabs}>
+
+      {/* Hamburger toggle */}
+      <div
+        className={`${styles.menuToggle} ${menuOpen ? styles.open : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Navigation Tabs */}
+      <ul className={`${styles.tabs} ${menuOpen ? styles.show : ""}`}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -24,10 +43,12 @@ const Header = () => {
           <Link to="/cart">Cart</Link>
         </li>
       </ul>
-      <Link to="/cart" className={styles.cartCount}>
+
+      {/* Cart Count */}
+      <Link to="/cart" className={styles.cartWrapper}>
         {cartTotal > 0 && <span className={styles.cartCount}>{cartTotal}</span>}
       </Link>
-    </div>
+    </header>
   );
 };
 
