@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import ShopReducer, { initialState } from "./ShopReducer";
 
 export const ShopContext = createContext(initialState);
@@ -6,16 +6,7 @@ export const ShopContext = createContext(initialState);
 export const ShopProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ShopReducer, initialState);
 
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(state.products));
-  }, [state.products]);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(state.cart));
-  }, [state.cart]);
-
   const AddToCart = (product) => {
-    const updatedProduct = state.cart.concat(product);
     dispatch({ type: "ADD_TO_CART", payload: { product: product } });
   };
   const RemoveFromCart = (id) => {
@@ -26,7 +17,6 @@ export const ShopProvider = ({ children }) => {
   };
 
   const AddProduct = (product) => {
-    const updatedProductItem = state.products.concat(product);
     dispatch({ type: "ADD_PRODUCT", payload: { product: product } });
   };
 

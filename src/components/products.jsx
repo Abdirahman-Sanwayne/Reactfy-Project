@@ -39,6 +39,8 @@ const Products = () => {
             >
               {cart.some((cartItem) => cartItem.id === product.id) ? "-" : "+"}
             </button>
+            {console.log("products:- ", products)}
+            {console.log("cart:- ", cart)}
           </div>
         );
       })}

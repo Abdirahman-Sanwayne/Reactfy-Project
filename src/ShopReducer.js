@@ -1,17 +1,8 @@
-import { useEffect } from "react";
+import { products, cart } from "./components/data";
 
-const safeParse = (key) => {
-  const value = localStorage.getItem(key);
-  try {
-    return value ? JSON.parse(value) : [];
-  } catch {
-    return [];
-  }
-};
-const cart = safeParse("cart");
 export const initialState = {
-  products: safeParse("products"),
-  cart: safeParse("cart"),
+  products: products,
+  cart: cart,
   total: cart.reduce((total, item) => total + item.price, 0),
 };
 
