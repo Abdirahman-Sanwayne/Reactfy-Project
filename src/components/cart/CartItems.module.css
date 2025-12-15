@@ -88,30 +88,37 @@
   font-style: italic;
   margin-top: 20px;
 }
-
-/* ✅ Responsive: switch to column only below 400px */
+/* ✅ Responsive: keep row layout but shrink sizes */
 @media (max-width: 400px) {
   .card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    flex-direction: row;       /* keep row */
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card img {
+    width: 45px;               /* smaller image */
+    height: 45px;
   }
 
   .cardInfo {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-    width: 100%;
+    flex-direction: row;       /* keep row */
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
   }
 
-  .proName,
-  .proPrice,
-  .remove {
-    flex: unset;
-    margin: 0;
+  .proName {
+    font-size: 0.9rem;         /* shrink text */
+    flex: 2;
+  }
+
+  .proPrice {
+    font-size: 0.9rem;
+    flex: 1;
   }
 
   .remove {
-    align-self: flex-end;
+    font-size: 1rem;           /* slightly smaller button */
   }
 }
